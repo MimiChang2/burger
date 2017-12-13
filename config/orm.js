@@ -1,37 +1,39 @@
+//5th
 var connection = require("./connection.js");
 
 // In the orm.js file, create the methods that will execute the necessary MySQL commands in the controllers. 
 //These are the methods you will need to use in order to retrieve and store data in your database.
 var orm = {
-    selectAll: function() {
+    selectAll: function(callback) {
         var query = "SELECT * FROM burgers";
         connection.query(query, function(error, result) {
             if (error) {
                 throw error;
             }
-            cb(result);
-            console.log(result);
+            console.log("orm selectAll: " + JSON.stringify(result));
+            callback(result);
+
         });
     },
-    insertOne: function(burger_name) {
+    insertOne: function(burger_name, cb) {
         var query = "INSERT INTO burger(burger_name) VALUES (?)";
         connection.query(query, burger_name, function(error, result) {
             if (error) {
                 throw error;
             }
             cb(result);
-            console.log(result);
+            console.log("orm insertOne: " + JSON.stringify(result));
 
         });
     },
-    updateOne: function(id, devoured) {
+    updateOne: function(id, devoured, cb) {
         var query = "UPDATE burgers SET devoured = true WHERE id = ?";
         connection.query(query, id, function(error, result) {
             if (error) {
                 throw error;
             }
             cb(result);
-            console.log(result);
+            console.log("orm updateOne: " + JSON.stringify(result));
 
         });
     }

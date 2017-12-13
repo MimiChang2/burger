@@ -1,3 +1,4 @@
+//3rd 
 // Inside the burger_controller.js file, import the following:
 // Express
 // burger.js
@@ -9,7 +10,7 @@ var router = express.Router();
 
 //Create routes
 router.get("/", function(request, response) {
-    Burger.selectAll(function(data) {
+    Burger.All(function(data) {
         var newBurger = {
             burgerdata: data
         };
@@ -19,27 +20,28 @@ router.get("/", function(request, response) {
 });
 
 router.post("/api/burgers", function(request, response) {
-    Burger.insertOne(["burger_name"], [request.body.burger_name],
+    Burger.Create(["burger_name"], [request.body.burger_name],
         function(result) {
             response.json({ id: result.id });
         });
 
 });
 
-router.put("/api/burgers/:id", function(request, response) {
-    var condition = "id = " + request.params.id;
-    console.log("Condition: ", conditon);
+// router.put("/api/burgers/:id", function(request, response) {
+//     var condition = "id = " + request.params.id;
+//     console.log("Condition: ", condition);
 
-    Burger.update({
-        devoured: req.body.devoured
-    }, condition, function(result) {
-        if (result.devoured === 1) {
+//     Burger.Update({
+//         devoured: req.body.devoured
+//     }, condition, function(result) {
+//         if (result.devoured === true) {
 
-        }
 
-    });
+//         }
 
-});
+//     });
+
+// });
 
 //export the router at the end of your file.
 module.exports = router;
