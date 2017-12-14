@@ -11,7 +11,7 @@
         need to return the array of burgers in the database
         <ol>
             {{#each burgerdata }}
-                <li>Item: {{this.id}}, Burger: {{this.burger_name}}</li>
+                <li>{{this.id}}, {{this.burger_name}}</li>
             {{/each}}
         </ol>
 
@@ -36,8 +36,9 @@
         console.log("test");
 
         var addBurger = {
-            name: $("#add-burger").val().trim(),
+            burger_name: $("#add-burger").val().trim(),
         };
+        console.log(addBurger);
 
         $.ajax("api/burgers", {
             type: "POST",
