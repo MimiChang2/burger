@@ -20,9 +20,10 @@ router.get("/", function(request, response) {
 });
 
 router.post("/api/burgers", function(request, response) {
-    Burger.Create(["burger_name"], [request.body.burger_name],
+    Burger.Create(request.body.burger_name,
         function(result) {
             response.json({ id: result.id });
+            console.log(result);
         });
 
 });

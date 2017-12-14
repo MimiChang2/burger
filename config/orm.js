@@ -16,8 +16,8 @@ var orm = {
         });
     },
     insertOne: function(burger_name, cb) {
-        var query = "INSERT INTO burger(burger_name) VALUES (?)";
-        connection.query(query, burger_name, function(error, result) {
+        var query = "INSERT INTO burgers (burger_name) VALUES (?)";
+        connection.query(query, [burger_name], function(error, result) {
             if (error) {
                 throw error;
             }
