@@ -42,7 +42,8 @@
         {{#unless devoured}}
             <li>{{this.id}}, {{this.burger_name}}
                 <button type="button" class="devour" data-id="{{id}}" data-newdevoured="{{devoured}}">	EAT BURGER!</button>
-                {{#if devoured}}EATEN!{{else}}EAT!{{/if}}
+                {{#if devoured}}{{else}}
+                {{/if}}
             </li>
         {{/unless}}
     {{/each}}
