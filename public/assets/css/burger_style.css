@@ -4,6 +4,36 @@ h1 {
     color: teal;
 }
 
-img {
+h2 {
+    font-family: Arial;
+    text-align: center;
+    color: teal;
+}
+
+ol {
+    font-family: Arial;
+    text-align: center;
+    color: teal;
+}
+
+ul {
+    font-family: Arial;
+    text-align: center;
+    color: teal;
+}
+
+li {
+    font-family: Arial;
+    text-align: center;
+    color: teal;
+}
+
+div {
+    font-family: Arial;
+    text-align: center;
+    color: teal;
+}
+
+p {
     text-align: center;
 }

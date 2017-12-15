@@ -30,9 +30,10 @@ router.post("/api/burgers", function(request, response) {
 
 // your put is not working because in your client side script you are putting data 
 // to "/api/burgers", but your router is expecting for "/api/burgers/:something"
-router.put("/api/burgers", function(request, response) {
+router.put("/api/burgers/:id", function(request, response) {
     var condition = "id = " + request.params.id;
     console.log("Condition: ", condition);
+    console.log(request);
 
     Burger.Update({
         devoured: request.body.devoured
