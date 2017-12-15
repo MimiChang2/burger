@@ -10,7 +10,7 @@ var orm = {
             if (error) {
                 throw error;
             }
-            console.log("orm selectAll: " + JSON.stringify(result));
+            // console.log("orm selectAll: " + JSON.stringify(result));
             callback(result);
 
         });
@@ -26,14 +26,15 @@ var orm = {
 
         });
     },
-    updateOne: function(id, devoured, cb) {
-        var query = "UPDATE burgers SET devoured = true WHERE id = ?";
-        connection.query(query, id, function(error, result) {
+    updateOne: function(id, cb) {
+        console.log(id);
+        var query = "UPDATE burgers SET devoured = 1 WHERE id = " + id.id + ";";
+        connection.query(query, function(error, result) {
             if (error) {
                 throw error;
             }
             cb(result);
-            console.log("orm updateOne: " + JSON.stringify(result));
+            // console.log("orm updateOne: " + JSON.stringify(result));
 
         });
     }

@@ -11,7 +11,7 @@ burger_name VARCHAR(30),
 devoured BOOLEAN DEFAULT false,
 date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY(id)
-),
+);
 
 -- Create the burgers_db.
 -- Switch to or use the burgers_db.

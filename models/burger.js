@@ -21,7 +21,7 @@ var burger = {
             cb(response);
         });
     },
-    Update: function(id, devoured, cb) {
+    Update: function(id, cb) {
         ORM.updateOne(id, function(response) {
             cb(response);
         });

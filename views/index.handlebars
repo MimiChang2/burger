@@ -42,8 +42,6 @@
         {{#unless devoured}}
             <li>{{this.id}}, {{this.burger_name}}
                 <button type="button" class="devour" data-id="{{id}}" data-newdevoured="{{devoured}}">	EAT BURGER!</button>
-                {{#if devoured}}{{else}}
-                {{/if}}
             </li>
         {{/unless}}
     {{/each}}
@@ -77,21 +75,18 @@
     $(".devour").on("click", function(event) {
         event.preventDefault();
         var id = $(this).data("id");
-        var devour = $(this).data("userdevour");
-
-        var userDevour = {
-            devour: devour
-        };
+        // var devour = $(this).data("userdevour"); // var userDevour = { // devour: devour // };
 
         console.log("test button");
 
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: userDevour,
-            traditional: true
+        $.ajax({
+            method: "PUT",
+            url: "/api/burgers/" + id
         }).done(function(response) {
             console.log(response);
-            location.reload();
+            //location.reload();
         });
+
+        // $.ajax("/api/burgers/" + id, { // type: "PUT", // data: userDevour, // traditional: true // }).done(function(response) { // console.log(response); // location.reload(); // });
     });
 </script>

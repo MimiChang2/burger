@@ -14,7 +14,7 @@ router.get("/", function(request, response) {
         var newBurger = {
             burgerdata: data
         };
-        console.log(newBurger);
+        // console.log(newBurger);
         response.render("index", newBurger);
     });
 });
@@ -33,16 +33,22 @@ router.post("/api/burgers", function(request, response) {
 router.put("/api/burgers/:id", function(request, response) {
     var condition = "id = " + request.params.id;
     console.log("Condition: ", condition);
-    console.log(request);
+    // console.log(request);
 
     Burger.Update({
-        devoured: request.body.devoured
-    }, condition, function(result) {
-        if (result.devoured === false) {
-            result.devoured = true;
-        }
+        id: request.params.id
+
+        // devoured: request.body.devoured
+    }, function(result) {
+        // console.log(result);
+        // response.redirect("/api/burgers");
+
+        // if (result.devoured === 0) {
+        //     result.devoured = 1;
+        // }
 
     });
+    response.send("text");
 });
 
 //export the router at the end of your file.
