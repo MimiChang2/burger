@@ -45,7 +45,25 @@
             data: addBurger
         }).then(
             function() {
-                console.log("your burger was added");
+                alert("your burger was added");
+                location.reload();
             });
     });
 </script>
+
+<h2>Time To Eat!!</h2>
+
+<ul>
+    {{#each burger}}
+        {{#unless devoured}}
+            <li>
+                {{name}}
+
+                <button type="submit" id="submit" class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">	EAT BURGER!</button>
+                {{#if devoured}}EATEN!{{else}}EAT!{{/if}}
+
+            </li>
+        {{/unless}}
+    {{/each}}
+
+</ul>
