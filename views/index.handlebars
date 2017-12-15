@@ -3,6 +3,12 @@
 
 {{!--loop through value object , create empty array to push into using #each--}}
 
+<head>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/burger_style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Menu of Burgers</h2>
 
 <div>
@@ -29,6 +35,21 @@
 </form>
 </div>
 
+<h2>Time To Eat!!</h2>
+
+<ul>
+    {{#each burgerdata}}
+        {{#unless devoured}}
+            <li>{{this.id}}, {{this.burger_name}}
+                <button type="button" class="devour" data-id="{{id}}" data-newdevoured="{{devoured}}">	EAT BURGER!</button>
+                {{#if devoured}}EATEN!{{else}}EAT!{{/if}}
+            </li>
+        {{/unless}}
+    {{/each}}
+
+
+</ul>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script>
     $("#submit").on("click", function(event) {
@@ -40,7 +61,9 @@
         };
         console.log(addBurger);
 
-        $.ajax("api/burgers", {
+        // you might want to use the backslash at the start of the url /api/burgers
+        // not sure if it makes any difference but i do it to avoid simple mistake
+        $.ajax("/api/burgers", {
             type: "POST",
             data: addBurger
         }).then(
@@ -49,21 +72,18 @@
                 location.reload();
             });
     });
+
+    $("#devour").on("click", function(event) {
+        event.preventDefault();
+        console.log("test button");
+
+        $.ajax("/api/burgers", {
+            type: "PUT",
+            data: { name: burger_name, id: devour.data("id") },
+            traditional: true
+        }).done(function(response) {
+            console.log(response);
+            location.reload();
+        });
+    });
 </script>
-
-<h2>Time To Eat!!</h2>
-
-<ul>
-    {{#each burger}}
-        {{#unless devoured}}
-            <li>
-                {{name}}
-
-                <button type="submit" id="submit" class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">	EAT BURGER!</button>
-                {{#if devoured}}EATEN!{{else}}EAT!{{/if}}
-
-            </li>
-        {{/unless}}
-    {{/each}}
-
-</ul>

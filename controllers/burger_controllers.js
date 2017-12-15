@@ -28,21 +28,21 @@ router.post("/api/burgers", function(request, response) {
 
 });
 
-// router.put("/api/burgers/:id", function(request, response) {
-//     var condition = "id = " + request.params.id;
-//     console.log("Condition: ", condition);
+// your put is not working because in your client side script you are putting data 
+// to "/api/burgers", but your router is expecting for "/api/burgers/:something"
+router.put("/api/burgers", function(request, response) {
+    var condition = "id = " + request.params.id;
+    console.log("Condition: ", condition);
 
-//     Burger.Update({
-//         devoured: req.body.devoured
-//     }, condition, function(result) {
-//         if (result.devoured === true) {
+    Burger.Update({
+        devoured: request.body.devoured
+    }, condition, function(result) {
+        if (result.devoured === false) {
+            result.devoured = true;
+        }
 
-
-//         }
-
-//     });
-
-// });
+    });
+});
 
 //export the router at the end of your file.
 module.exports = router;
