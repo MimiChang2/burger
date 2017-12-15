@@ -10,7 +10,7 @@ else {
         host: "tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         user: "g92nyuy75d0gtem1",
         password: "q8zywi6fi2mxoyr2",
-        database: "burgers_db"
+        database: "q00ju0r0gfb1n7io"
     });
 }
 
