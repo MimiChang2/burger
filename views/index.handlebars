@@ -83,8 +83,9 @@
             method: "PUT",
             url: "/api/burgers/" + id
         }).done(function(response) {
+            alert("you just ate this burger!");
             console.log(response);
-            //location.reload();
+            location.reload();
         });
 
         // $.ajax("/api/burgers/" + id, { // type: "PUT", // data: userDevour, // traditional: true // }).done(function(response) { // console.log(response); // location.reload(); // });
